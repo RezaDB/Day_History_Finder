@@ -28,7 +28,7 @@ app.post("/", async (req,res)=>{
         res.render("index.ejs", { dayHistory: randomEvent.description, eventYear: eventDate, eventTitle: eventTitle });
     } catch (error){
         console.log(error.message);
-        res.render("index.ejs", {dayHistory: "The chosen date is not valid or the API does not work at the moment."});
+        res.render("index.ejs", {dayHistory: "The chosen date is not valid or the API does not work at the moment.", eventYear: "-", eventTitle: "-"});
     }
 });
 
