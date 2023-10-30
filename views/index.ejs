@@ -63,9 +63,15 @@
                   <option value="30">30</option>
                   <option value="31">31</option>
                  </select></br>
+
                 <button type="submit" id="submitButton" value="submit">Let's Go</button>
             </form>
-            <div id="answerDiv"><%= dayHistory %></div>
+            <div id="answerDiv">
+              <h5>Event Title: <%= eventTitle %></h5> </br>
+              <h5>Event Date: <%= eventYear %></h5> </br>
+              <%= dayHistory %>
+              
+            </div>
 
         </div>
     </section>

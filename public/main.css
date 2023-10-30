@@ -45,6 +45,9 @@ body {
   margin-bottom: 30px;
   padding: 30px;
 }
+#answerDiv *{
+  color: black;
+}
 
 .mainHeader {
   font-size: 2em;

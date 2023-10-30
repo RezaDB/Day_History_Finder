@@ -6,7 +6,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
 
 app.get("/", (req,res)=>{
-    res.render("index.ejs", {dayHistory: "The history of provided day will be presented here"});
+    res.render("index.ejs", {dayHistory: "The history of provided day will be presented here", eventYear: "-" , eventTitle: "-"});
 });
 
 app.post("/", async (req,res)=>{
@@ -21,11 +21,14 @@ app.post("/", async (req,res)=>{
         const eventNum= Math.floor(Math.random()*eventLength);
         const randomEvent= result.events[eventNum]; 
         console.log(randomEvent);
-        
-        res.render("index.ejs", {dayHistory: randomEvent.description});
+        const eventDate= randomEvent.year+"."+selectedMonth+"."+selectedDay;
+        console.log(eventDate);
+        const eventTitle= randomEvent.wikipedia[0].title;
+        console.log(eventTitle);
+        res.render("index.ejs", { dayHistory: randomEvent.description, eventYear: eventDate, eventTitle: eventTitle });
     } catch (error){
         console.log(error.message);
-        res.render("index.ejs", {dayHistory: error.message});
+        res.render("index.ejs", {dayHistory: "The chosen date is not valid or the API does not work at the moment."});
     }
 });
 
